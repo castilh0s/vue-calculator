@@ -1,31 +1,42 @@
 <template>
-  <div id="app">
-    <h1>Calculadora Vue.Js</h1>
+  <vApp>
+    <vContainer
+      grid-list-md
+      text-xs-center
+    >
+      <VLayout wrap>
+        <VFlex xs12>
+          <h1>Calculadora Vue.Js</h1>
+        </VFlex>
 
-    <div>
-      <input v-model="valorA" type="number" placeholder="Valor A">
-      <input v-model="valorB" type="number" placeholder="Valor B">
-    </div>
+        <VFlex xs12>
+          <input v-model="valorA" type="number" placeholder="Valor A">
+          <input v-model="valorB" type="number" placeholder="Valor B">
+        </VFlex>
 
-    <div>
-      <button @click="somar()">+</button>
-      <button @click="subtrair()">-</button>
-      <button @click="multiplicar()">*</button>
-      <button @click="dividir()">/</button>
-    </div>
+        <VFlex xs12>
+          <button @click="somar()">+</button>
+          <button @click="subtrair()">-</button>
+          <button @click="multiplicar()">*</button>
+          <button @click="dividir()">/</button>
+        </VFlex>
 
-    <div v-if="resultado != null">
-      <h3>
-        Resultado: {{ resultado }}
-      </h3>
-    </div>
-  </div>
+        <VFlex
+          v-if="resultado != null"
+          xs12
+        >
+          <h3>
+            Resultado: {{ resultado }}
+          </h3>
+        </VFlex>
+      </VLayout>
+    </vContainer>
+  </vApp>
 </template>
 
 <script>
 export default {
   name: 'app',
-
   data() {
     return {
       valorA: null,
@@ -33,7 +44,6 @@ export default {
       resultado: null
     }
   },
-
   methods: {
     somar () {
       if (this.verificaValores()) {
@@ -59,29 +69,8 @@ export default {
       if (this.valorA && this.valorB) {
         return true
       }
-
       return false
     }
   },
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-input, button {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-div {
-  margin: 10px;
-}
-</style>
