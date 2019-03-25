@@ -32,18 +32,13 @@
               v-for="botao in botoes"
               :key="botao.label"
             >
-              <VTooltip bottom>
-                <VBtn
-                  color="primary"
-                  outline
-                  block
-                  slot="activator"
-                  @click="botao.funcao()"
-                >
-                  <VIcon>{{ botao.icon }}</VIcon>
-                </VBtn>
-                <span>{{ botao.label }}</span>
-              </VTooltip>
+              <VBtn
+                color="primary"
+                outline
+                block
+                v-text="botao.label"
+                @click="botao.funcao()"
+              />
             </VFlex>
           </VLayout>
 
@@ -70,10 +65,10 @@ export default {
       valorB: null,
       resultado: 0,
       botoes: [
-        { icon: 'fas fa-plus', label: 'Somar', funcao: this.somar },
-        { icon: 'fas fa-minus', label: 'Subtrair', funcao: this.subtrair },
-        { icon: 'fas fa-times', label: 'Multiplicar', funcao: this.multiplicar },
-        { icon: 'fas fa-divide', label: 'Dividir', funcao: this.dividir }
+        { label: 'Somar', funcao: this.somar },
+        { label: 'Subtrair', funcao: this.subtrair },
+        { label: 'Multiplicar', funcao: this.multiplicar },
+        { label: 'Dividir', funcao: this.dividir }
       ]
     }
   },
