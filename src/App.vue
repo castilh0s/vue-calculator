@@ -1,47 +1,80 @@
 <template>
-  <vApp>
-    <vContainer
+  <VApp>
+    <VContainer
       grid-list-md
-      text-xs-center
+      fill-height
     >
-      <VLayout wrap>
+      <VLayout
+        align-center
+        justify-center
+        text-xs-center
+      >
         <VFlex xs12>
-          <h1>Calculadora Vue.Js</h1>
-        </VFlex>
+          <h1 class="display-2">
+            Calculadora Vue.js
+          </h1>
 
-        <VFlex xs12>
-          <input v-model="valorA" type="number" placeholder="Valor A">
-          <input v-model="valorB" type="number" placeholder="Valor B">
-        </VFlex>
+          <VLayout wrap>
+            <VFlex xs12 md6>
+              <VTextField
+                v-model="valorA"
+                label="Valor A"
+              />
+            </VFlex>
+            <VFlex xs12 md6>
+              <VTextField
+                v-model="valorB"
+                label="Valor B"
+              />
+            </VFlex>
 
-        <VFlex xs12>
-          <button @click="somar()">+</button>
-          <button @click="subtrair()">-</button>
-          <button @click="multiplicar()">*</button>
-          <button @click="dividir()">/</button>
-        </VFlex>
+            <VFlex
+              v-for="botao in botoes"
+              :key="botao.label"
+            >
+              <VTooltip bottom>
+                <VBtn
+                  color="primary"
+                  outline
+                  block
+                  slot="activator"
+                  @click="botao.funcao()"
+                >
+                  <VIcon>{{ botao.icon }}</VIcon>
+                </VBtn>
+                <span>{{ botao.label }}</span>
+              </VTooltip>
+            </VFlex>
+          </VLayout>
 
-        <VFlex
-          v-if="resultado != null"
-          xs12
-        >
-          <h3>
-            Resultado: {{ resultado }}
-          </h3>
+          <VDivider class="my-2" />
+
+          <div
+            v-if="resultado != null"
+            class="headline"
+          >
+            Resposta: {{ resultado }}
+          </div>
         </VFlex>
       </VLayout>
-    </vContainer>
-  </vApp>
+    </VContainer>
+  </VApp>
 </template>
 
 <script>
 export default {
   name: 'app',
-  data() {
+  data () {
     return {
       valorA: null,
       valorB: null,
-      resultado: null
+      resultado: 0,
+      botoes: [
+        { icon: 'mdi-plus', label: 'Somar', funcao: this.somar },
+        { icon: 'mdi-minus', label: 'Subtrair', funcao: this.subtrair },
+        { icon: 'mdi-multiplication', label: 'Multiplicar', funcao: this.multiplicar },
+        { icon: 'mdi-division', label: 'Dividir', funcao: this.dividir }
+      ]
     }
   },
   methods: {
@@ -71,6 +104,6 @@ export default {
       }
       return false
     }
-  },
+  }
 }
 </script>
