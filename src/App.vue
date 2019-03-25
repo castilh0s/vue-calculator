@@ -70,10 +70,10 @@ export default {
       valorB: null,
       resultado: 0,
       botoes: [
-        { icon: 'mdi-plus', label: 'Somar', funcao: this.somar },
-        { icon: 'mdi-minus', label: 'Subtrair', funcao: this.subtrair },
-        { icon: 'mdi-multiplication', label: 'Multiplicar', funcao: this.multiplicar },
-        { icon: 'mdi-division', label: 'Dividir', funcao: this.dividir }
+        { icon: 'fas fa-plus', label: 'Somar', funcao: this.somar },
+        { icon: 'fas fa-minus', label: 'Subtrair', funcao: this.subtrair },
+        { icon: 'fas fa-times', label: 'Multiplicar', funcao: this.multiplicar },
+        { icon: 'fas fa-divide', label: 'Dividir', funcao: this.dividir }
       ]
     }
   },
